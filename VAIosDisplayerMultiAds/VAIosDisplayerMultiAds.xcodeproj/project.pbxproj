@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA7F992F2A540D4100C823DA /* VAIosDisplayerMultiAdsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F992E2A540D4100C823DA /* VAIosDisplayerMultiAdsApp.swift */; };
+		AA7F99312A540D4100C823DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F99302A540D4100C823DA /* ContentView.swift */; };
+		AA7F99332A540D4200C823DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7F99322A540D4200C823DA /* Assets.xcassets */; };
+		AA7F99362A540D4200C823DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA7F99352A540D4200C823DA /* Preview Assets.xcassets */; };
+		AA7F99402A540D4200C823DA /* VAIosDisplayerMultiAdsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F993F2A540D4200C823DA /* VAIosDisplayerMultiAdsTests.swift */; };
+		AA7F994A2A540D4200C823DA /* VAIosDisplayerMultiAdsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F99492A540D4200C823DA /* VAIosDisplayerMultiAdsUITests.swift */; };
+		AA7F994C2A540D4200C823DA /* VAIosDisplayerMultiAdsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F994B2A540D4200C823DA /* VAIosDisplayerMultiAdsUITestsLaunchTests.swift */; };
+		AA7F995B2A540DC800C823DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F995A2A540DC800C823DA /* ViewController.swift */; };
+		AA7F995E2A540E3200C823DA /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7F995D2A540E3200C823DA /* Images.swift */; };
+		AA7F99602A54252300C823DA /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AA7F995F2A54252300C823DA /* test.mp4 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AA7F993C2A540D4200C823DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA7F99232A540D4100C823DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA7F992A2A540D4100C823DA;
+			remoteInfo = VAIosDisplayerMultiAds;
+		};
+		AA7F99462A540D4200C823DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA7F99232A540D4100C823DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA7F992A2A540D4100C823DA;
+			remoteInfo = VAIosDisplayerMultiAds;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA7F992B2A540D4100C823DA /* VAIosDisplayerMultiAds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VAIosDisplayerMultiAds.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7F992E2A540D4100C823DA /* VAIosDisplayerMultiAdsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAIosDisplayerMultiAdsApp.swift; sourceTree = "<group>"; };
+		AA7F99302A540D4100C823DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "../New Group/ContentView.swift"; sourceTree = "<group>"; };
+		AA7F99322A540D4200C823DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA7F99352A540D4200C823DA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AA7F993B2A540D4200C823DA /* VAIosDisplayerMultiAdsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VAIosDisplayerMultiAdsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7F993F2A540D4200C823DA /* VAIosDisplayerMultiAdsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAIosDisplayerMultiAdsTests.swift; sourceTree = "<group>"; };
+		AA7F99452A540D4200C823DA /* VAIosDisplayerMultiAdsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VAIosDisplayerMultiAdsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7F99492A540D4200C823DA /* VAIosDisplayerMultiAdsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAIosDisplayerMultiAdsUITests.swift; sourceTree = "<group>"; };
+		AA7F994B2A540D4200C823DA /* VAIosDisplayerMultiAdsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAIosDisplayerMultiAdsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AA7F995A2A540DC800C823DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA7F995D2A540E3200C823DA /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		AA7F995F2A54252300C823DA /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA7F99282A540D4100C823DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7F99382A540D4200C823DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7F99422A540D4200C823DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA7F99222A540D4100C823DA = {
+			isa = PBXGroup;
+			children = (
+				AA7F992D2A540D4100C823DA /* VAIosDisplayerMultiAds */,
+				AA7F993E2A540D4200C823DA /* VAIosDisplayerMultiAdsTests */,
+				AA7F99482A540D4200C823DA /* VAIosDisplayerMultiAdsUITests */,
+				AA7F992C2A540D4100C823DA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA7F992C2A540D4100C823DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F992B2A540D4100C823DA /* VAIosDisplayerMultiAds.app */,
+				AA7F993B2A540D4200C823DA /* VAIosDisplayerMultiAdsTests.xctest */,
+				AA7F99452A540D4200C823DA /* VAIosDisplayerMultiAdsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA7F992D2A540D4100C823DA /* VAIosDisplayerMultiAds */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F995C2A540E1600C823DA /* Components */,
+				AA7F99592A540D8F00C823DA /* ViewController */,
+				AA7F99582A540D5B00C823DA /* Views */,
+				AA7F992E2A540D4100C823DA /* VAIosDisplayerMultiAdsApp.swift */,
+				AA7F995F2A54252300C823DA /* test.mp4 */,
+				AA7F99322A540D4200C823DA /* Assets.xcassets */,
+				AA7F99342A540D4200C823DA /* Preview Content */,
+			);
+			path = VAIosDisplayerMultiAds;
+			sourceTree = "<group>";
+		};
+		AA7F99342A540D4200C823DA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F99352A540D4200C823DA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AA7F993E2A540D4200C823DA /* VAIosDisplayerMultiAdsTests */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F993F2A540D4200C823DA /* VAIosDisplayerMultiAdsTests.swift */,
+			);
+			path = VAIosDisplayerMultiAdsTests;
+			sourceTree = "<group>";
+		};
+		AA7F99482A540D4200C823DA /* VAIosDisplayerMultiAdsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F99492A540D4200C823DA /* VAIosDisplayerMultiAdsUITests.swift */,
+				AA7F994B2A540D4200C823DA /* VAIosDisplayerMultiAdsUITestsLaunchTests.swift */,
+			);
+			path = VAIosDisplayerMultiAdsUITests;
+			sourceTree = "<group>";
+		};
+		AA7F99582A540D5B00C823DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F99302A540D4100C823DA /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA7F99592A540D8F00C823DA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F995A2A540DC800C823DA /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AA7F995C2A540E1600C823DA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AA7F995D2A540E3200C823DA /* Images.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA7F992A2A540D4100C823DA /* VAIosDisplayerMultiAds */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA7F994F2A540D4200C823DA /* Build configuration list for PBXNativeTarget "VAIosDisplayerMultiAds" */;
+			buildPhases = (
+				AA7F99272A540D4100C823DA /* Sources */,
+				AA7F99282A540D4100C823DA /* Frameworks */,
+				AA7F99292A540D4100C823DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VAIosDisplayerMultiAds;
+			productName = VAIosDisplayerMultiAds;
+			productReference = AA7F992B2A540D4100C823DA /* VAIosDisplayerMultiAds.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA7F993A2A540D4200C823DA /* VAIosDisplayerMultiAdsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA7F99522A540D4200C823DA /* Build configuration list for PBXNativeTarget "VAIosDisplayerMultiAdsTests" */;
+			buildPhases = (
+				AA7F99372A540D4200C823DA /* Sources */,
+				AA7F99382A540D4200C823DA /* Frameworks */,
+				AA7F99392A540D4200C823DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA7F993D2A540D4200C823DA /* PBXTargetDependency */,
+			);
+			name = VAIosDisplayerMultiAdsTests;
+			productName = VAIosDisplayerMultiAdsTests;
+			productReference = AA7F993B2A540D4200C823DA /* VAIosDisplayerMultiAdsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA7F99442A540D4200C823DA /* VAIosDisplayerMultiAdsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA7F99552A540D4200C823DA /* Build configuration list for PBXNativeTarget "VAIosDisplayerMultiAdsUITests" */;
+			buildPhases = (
+				AA7F99412A540D4200C823DA /* Sources */,
+				AA7F99422A540D4200C823DA /* Frameworks */,
+				AA7F99432A540D4200C823DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA7F99472A540D4200C823DA /* PBXTargetDependency */,
+			);
+			name = VAIosDisplayerMultiAdsUITests;
+			productName = VAIosDisplayerMultiAdsUITests;
+			productReference = AA7F99452A540D4200C823DA /* VAIosDisplayerMultiAdsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA7F99232A540D4100C823DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					AA7F992A2A540D4100C823DA = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					AA7F993A2A540D4200C823DA = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = AA7F992A2A540D4100C823DA;
+					};
+					AA7F99442A540D4200C823DA = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = AA7F992A2A540D4100C823DA;
+					};
+				};
+			};
+			buildConfigurationList = AA7F99262A540D4100C823DA /* Build configuration list for PBXProject "VAIosDisplayerMultiAds" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA7F99222A540D4100C823DA;
+			productRefGroup = AA7F992C2A540D4100C823DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA7F992A2A540D4100C823DA /* VAIosDisplayerMultiAds */,
+				AA7F993A2A540D4200C823DA /* VAIosDisplayerMultiAdsTests */,
+				AA7F99442A540D4200C823DA /* VAIosDisplayerMultiAdsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA7F99292A540D4100C823DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7F99362A540D4200C823DA /* Preview Assets.xcassets in Resources */,
+				AA7F99602A54252300C823DA /* test.mp4 in Resources */,
+				AA7F99332A540D4200C823DA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7F99392A540D4200C823DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7F99432A540D4200C823DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA7F99272A540D4100C823DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7F995B2A540DC800C823DA /* ViewController.swift in Sources */,
+				AA7F995E2A540E3200C823DA /* Images.swift in Sources */,
+				AA7F99312A540D4100C823DA /* ContentView.swift in Sources */,
+				AA7F992F2A540D4100C823DA /* VAIosDisplayerMultiAdsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7F99372A540D4200C823DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7F99402A540D4200C823DA /* VAIosDisplayerMultiAdsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA7F99412A540D4200C823DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7F994C2A540D4200C823DA /* VAIosDisplayerMultiAdsUITestsLaunchTests.swift in Sources */,
+				AA7F994A2A540D4200C823DA /* VAIosDisplayerMultiAdsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA7F993D2A540D4200C823DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA7F992A2A540D4100C823DA /* VAIosDisplayerMultiAds */;
+			targetProxy = AA7F993C2A540D4200C823DA /* PBXContainerItemProxy */;
+		};
+		AA7F99472A540D4200C823DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA7F992A2A540D4100C823DA /* VAIosDisplayerMultiAds */;
+			targetProxy = AA7F99462A540D4200C823DA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AA7F994D2A540D4200C823DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA7F994E2A540D4200C823DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA7F99502A540D4200C823DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VAIosDisplayerMultiAds/Preview Content\"";
+				DEVELOPMENT_TEAM = 554LR8Z3MY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yubomsft.VAIosDisplayerMultiAds;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA7F99512A540D4200C823DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VAIosDisplayerMultiAds/Preview Content\"";
+				DEVELOPMENT_TEAM = 554LR8Z3MY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yubomsft.VAIosDisplayerMultiAds;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AA7F99532A540D4200C823DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 554LR8Z3MY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yubomsft.VAIosDisplayerMultiAdsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VAIosDisplayerMultiAds.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VAIosDisplayerMultiAds";
+			};
+			name = Debug;
+		};
+		AA7F99542A540D4200C823DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 554LR8Z3MY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yubomsft.VAIosDisplayerMultiAdsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VAIosDisplayerMultiAds.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VAIosDisplayerMultiAds";
+			};
+			name = Release;
+		};
+		AA7F99562A540D4200C823DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 554LR8Z3MY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yubomsft.VAIosDisplayerMultiAdsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VAIosDisplayerMultiAds;
+			};
+			name = Debug;
+		};
+		AA7F99572A540D4200C823DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 554LR8Z3MY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yubomsft.VAIosDisplayerMultiAdsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VAIosDisplayerMultiAds;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA7F99262A540D4100C823DA /* Build configuration list for PBXProject "VAIosDisplayerMultiAds" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7F994D2A540D4200C823DA /* Debug */,
+				AA7F994E2A540D4200C823DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA7F994F2A540D4200C823DA /* Build configuration list for PBXNativeTarget "VAIosDisplayerMultiAds" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7F99502A540D4200C823DA /* Debug */,
+				AA7F99512A540D4200C823DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA7F99522A540D4200C823DA /* Build configuration list for PBXNativeTarget "VAIosDisplayerMultiAdsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7F99532A540D4200C823DA /* Debug */,
+				AA7F99542A540D4200C823DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA7F99552A540D4200C823DA /* Build configuration list for PBXNativeTarget "VAIosDisplayerMultiAdsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7F99562A540D4200C823DA /* Debug */,
+				AA7F99572A540D4200C823DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA7F99232A540D4100C823DA /* Project object */;
+}
