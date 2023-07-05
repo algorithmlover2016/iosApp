@@ -95,18 +95,6 @@ struct ContentView: View {
     // */
 }
 
-struct MyVideoPlayer: UIViewControllerRepresentable {
-    typealias UIViewControllerType = ViewController
-    
-    func makeUIViewController(context: Context) -> ViewController {
-        return ViewController()
-    }
-    
-    func updateUIViewController(_ uiViewController: ViewController, context: Context) {
-        // You can perform any necessary updates here
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
