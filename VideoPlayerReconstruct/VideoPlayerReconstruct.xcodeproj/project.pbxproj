@@ -16,6 +16,8 @@
 		AAAB19822A545D16001AC3DE /* VideoPlayerReconstructUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19812A545D16001AC3DE /* VideoPlayerReconstructUITestsLaunchTests.swift */; };
 		AAAB19902A545D5E001AC3DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB198F2A545D5E001AC3DE /* ViewController.swift */; };
 		AAAB19922A54F2B5001AC3DE /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AAAB19912A54F2B5001AC3DE /* test.mp4 */; };
+		AAAB19962A550E4A001AC3DE /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19952A550E4A001AC3DE /* ViewControllerDelegate.swift */; };
+		AAAB19982A550E97001AC3DE /* ViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19972A550E97001AC3DE /* ViewControllerWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		AAAB19812A545D16001AC3DE /* VideoPlayerReconstructUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerReconstructUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AAAB198F2A545D5E001AC3DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AAAB19912A54F2B5001AC3DE /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		AAAB19952A550E4A001AC3DE /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
+		AAAB19972A550E97001AC3DE /* ViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				AAAB198F2A545D5E001AC3DE /* ViewController.swift */,
+				AAAB19952A550E4A001AC3DE /* ViewControllerDelegate.swift */,
+				AAAB19972A550E97001AC3DE /* ViewControllerWrapper.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,8 +279,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAAB19902A545D5E001AC3DE /* ViewController.swift in Sources */,
+				AAAB19962A550E4A001AC3DE /* ViewControllerDelegate.swift in Sources */,
 				AAAB19672A545D15001AC3DE /* ContentView.swift in Sources */,
 				AAAB19652A545D15001AC3DE /* VideoPlayerReconstructApp.swift in Sources */,
+				AAAB19982A550E97001AC3DE /* ViewControllerWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
