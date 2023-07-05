@@ -19,6 +19,7 @@ class ViewControllerDelegate: ObservableObject {
         print("press toggle button, the former value is: \(useLocalFile)")
         useLocalFile.toggle()
         print("after toggle, the value is: \(useLocalFile)")
+        viewController?.toggleFileOption()
     }
     func getUseLocalFile() -> Bool {
         return useLocalFile

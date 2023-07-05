@@ -44,7 +44,7 @@ struct ContentView: View {
         }
     }
     */
-        
+
     // /*
     var body: some View {
         NavigationView {
@@ -53,8 +53,10 @@ struct ContentView: View {
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
                 Text("Hello, world!")
+                    .foregroundColor(.white)
                 Text("Welcome to My App")
                     .font(.largeTitle)
+                    .foregroundColor(.white)
                 
                 Button(action: {
                     viewControllerDelegate.toggleFileOption()
@@ -84,17 +86,10 @@ struct ContentView: View {
             }
             // .navigationTitle("Home")
             .navigationBarTitle("Home")
-            /*
-             .background(ViewControllerWrapper(delegate: viewControllerDelegate))
-             */
+            .background(ViewControllerWrapper(delegate: viewControllerDelegate))
             .sheet(isPresented: $isVideoPlayerPresented) {
                 ViewControllerWrapper(delegate: viewControllerDelegate)
             }
-            /*
-             .sheet(isPresented: $isVideoPlayerPresented) {
-             MyVideoPlayer()
-             }
-             */
         }
     }
     // */
