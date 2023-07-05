@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         let videoURL: URL
 
         // Check if local file "test.mp4" exists
-        if let localVideoPath = Bundle.main.path(forResource: "tests", ofType: "mp4"),
+        if let localVideoPath = Bundle.main.path(forResource: "test", ofType: "mp4"),
            FileManager.default.fileExists(atPath: localVideoPath) {
             // Local file exists, use it
             videoURL = URL(fileURLWithPath: localVideoPath)
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         playerViewController = AVPlayerViewController()
         playerViewController?.player = player
         playerViewController?.delegate = self
-        playerViewController?.modalPresentationStyle = .fullScreen
+        // playerViewController?.modalPresentationStyle = .fullScreen
 
         addChild(playerViewController!)
         view.addSubview(playerViewController!.view)
@@ -55,18 +55,8 @@ class ViewController: UIViewController {
             self?.progressSlider?.value = progress
         }
 
-        // Present the player view controller full screen
-        // presentPlayerFullScreen()
     }
 
-
-    func presentPlayerFullScreen() {
-        guard let playerViewController = playerViewController else { return }
-
-        present(playerViewController, animated: true) {
-            self.player?.play()
-        }
-    }
     // Play button action
     @IBAction func playButtonPressed(_ sender: UIButton) {
         player?.play()
@@ -93,73 +83,3 @@ extension ViewController: AVPlayerViewControllerDelegate {
         playerViewController.dismiss(animated: true, completion: nil)
     }
 }
-// */
-
-
-/*
-class ViewController: UIViewController {
-
-    var player: AVPlayer?
-    var playerViewController: AVPlayerViewController?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        /*
-        guard let videoPath = Bundle.main.path(forResource: "test", ofType: "mp4") else {
-                    print("Local video file not found.")
-                    return
-        }
-        let videoURL = URL(fileURLWithPath: videoPath)
-         */
-        let videoURL: URL
-
-        // Check if local file "test.mp4" exists
-        if let localVideoPath = Bundle.main.path(forResource: "tests", ofType: "mp4"),
-           FileManager.default.fileExists(atPath: localVideoPath) {
-            // Local file exists, use it
-            videoURL = URL(fileURLWithPath: localVideoPath)
-        } else {
-            // Local file doesn't exist, use remote URL as fallback
-            videoURL = URL(string: "https://joy.videvo.net/videvo_files/video/premium/partners0524/large_watermarked/BB_01bbb1fd-672a-4b8c-81fb-34a99ced87d4_preview.mp4")!
-        }
-
-        player = AVPlayer(url: videoURL)
-
-        playerViewController = AVPlayerViewController()
-        playerViewController?.player = player
-        playerViewController?.delegate = self
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        presentPlayerFullScreen()
-    }
-
-    func presentPlayerFullScreen() {
-        guard let playerViewController = playerViewController else { return }
-
-        playerViewController.modalPresentationStyle = .fullScreen
-        present(playerViewController, animated: true) {
-            self.player?.play()
-        }
-    }
-}
-
-extension ViewController: AVPlayerViewControllerDelegate {
-    func playerViewControllerDidStopPictureInPicture(_ playerViewController: AVPlayerViewController) {
-        // Dismiss the full screen player when Picture in Picture mode ends
-        playerViewController.dismiss(animated: true, completion: nil)
-    }
-
-    func playerViewControllerDidFinishDismissalTransition(_ playerViewController: AVPlayerViewController) {
-        player?.pause() // Stop the player
-        // Perform additional actions if needed
-        playerViewController.dismiss(animated: true) {
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
-}
-
-*/
