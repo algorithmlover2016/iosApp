@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var isVideoPlayerPresented: Bool = false
     @StateObject private var viewControllerDelegate = ViewControllerDelegate()
+    @State private var isButtonBlue = false
 
     /*
     var body: some View {
@@ -57,11 +58,12 @@ struct ContentView: View {
                 
                 Button(action: {
                     viewControllerDelegate.toggleFileOption()
+                    isButtonBlue.toggle()
                 }) {
                     Text("Toggle File Option")
                         .font(.title)
                         .padding()
-                        .background(Color.gray)
+                        .background(isButtonBlue ? Color.blue : Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
@@ -83,15 +85,15 @@ struct ContentView: View {
             // .navigationTitle("Home")
             .navigationBarTitle("Home")
             /*
-            .background(ViewControllerWrapper(delegate: viewControllerDelegate))
+             .background(ViewControllerWrapper(delegate: viewControllerDelegate))
              */
             .sheet(isPresented: $isVideoPlayerPresented) {
                 ViewControllerWrapper(delegate: viewControllerDelegate)
             }
             /*
-            .sheet(isPresented: $isVideoPlayerPresented) {
-                MyVideoPlayer()
-            }
+             .sheet(isPresented: $isVideoPlayerPresented) {
+             MyVideoPlayer()
+             }
              */
         }
     }
