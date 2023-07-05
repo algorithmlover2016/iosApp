@@ -79,7 +79,7 @@ class ViewController: UIViewController {
 
     @IBAction func toggleFileOption() {
         useLocalFile.toggle()
-        print("ViewController useLocalFile: \(useLocalFile)")
+        // print("ViewController useLocalFile: \(useLocalFile)")
 
     }
 
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
 
     private func setupPlayer() {
         let videoURL = selectedVideoURL()
-        print("set new videoURL: \(videoURL)")
+        // print("set new videoURL: \(videoURL)")
 
         player?.replaceCurrentItem(with: AVPlayerItem(url: videoURL))
     }
