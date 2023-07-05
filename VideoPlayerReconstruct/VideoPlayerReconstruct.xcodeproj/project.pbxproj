@@ -15,6 +15,7 @@
 		AAAB19802A545D16001AC3DE /* VideoPlayerReconstructUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB197F2A545D16001AC3DE /* VideoPlayerReconstructUITests.swift */; };
 		AAAB19822A545D16001AC3DE /* VideoPlayerReconstructUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19812A545D16001AC3DE /* VideoPlayerReconstructUITestsLaunchTests.swift */; };
 		AAAB19902A545D5E001AC3DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB198F2A545D5E001AC3DE /* ViewController.swift */; };
+		AAAB19922A54F2B5001AC3DE /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AAAB19912A54F2B5001AC3DE /* test.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		AAAB197F2A545D16001AC3DE /* VideoPlayerReconstructUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerReconstructUITests.swift; sourceTree = "<group>"; };
 		AAAB19812A545D16001AC3DE /* VideoPlayerReconstructUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerReconstructUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AAAB198F2A545D5E001AC3DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AAAB19912A54F2B5001AC3DE /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				AAAB19642A545D15001AC3DE /* VideoPlayerReconstructApp.swift */,
 				AAAB19662A545D15001AC3DE /* ContentView.swift */,
 				AAAB19682A545D16001AC3DE /* Assets.xcassets */,
+				AAAB19912A54F2B5001AC3DE /* test.mp4 */,
 				AAAB196A2A545D16001AC3DE /* Preview Content */,
 			);
 			path = VideoPlayerReconstruct;
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAAB196C2A545D16001AC3DE /* Preview Assets.xcassets in Resources */,
+				AAAB19922A54F2B5001AC3DE /* test.mp4 in Resources */,
 				AAAB19692A545D16001AC3DE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

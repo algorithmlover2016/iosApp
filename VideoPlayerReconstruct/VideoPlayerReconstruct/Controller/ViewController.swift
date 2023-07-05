@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 import AVKit
 
-/*
+// /*
 class ViewController: UIViewController {
 
     var player: AVPlayer?
@@ -22,9 +22,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let videoURL = URL(string: "https://joy1.videvo.net/videvo_files/video/free/2019-05/large_watermarked/190516_06_AZ-LAGOA-30_preview.mp4")
+        // let videoURL = URL(string: "https://joy1.videvo.net/videvo_files/video/free/2019-05/large_watermarked/190516_06_AZ-LAGOA-30_preview.mp4")
         // https://joy.videvo.net/videvo_files/video/premium/partners0524/large_watermarked/BB_01bbb1fd-672a-4b8c-81fb-34a99ced87d4_preview.mp4
-        player = AVPlayer(url: videoURL!)
+        let videoURL: URL
+
+        // Check if local file "test.mp4" exists
+        if let localVideoPath = Bundle.main.path(forResource: "tests", ofType: "mp4"),
+           FileManager.default.fileExists(atPath: localVideoPath) {
+            // Local file exists, use it
+            videoURL = URL(fileURLWithPath: localVideoPath)
+        } else {
+            // Local file doesn't exist, use remote URL as fallback
+            videoURL = URL(string: "https://joy.videvo.net/videvo_files/video/premium/partners0524/large_watermarked/BB_01bbb1fd-672a-4b8c-81fb-34a99ced87d4_preview.mp4")!
+        }
+        player = AVPlayer(url: videoURL)
 
         playerViewController = AVPlayerViewController()
         playerViewController?.player = player
@@ -41,7 +52,7 @@ class ViewController: UIViewController {
             let totalSeconds = CMTimeGetSeconds(duration)
             let currentSeconds = CMTimeGetSeconds(time)
             let progress = Float(currentSeconds / totalSeconds)
-            self?.progressSlider.value = progress
+            self?.progressSlider?.value = progress
         }
 
         // Present the player view controller full screen
@@ -82,9 +93,10 @@ extension ViewController: AVPlayerViewControllerDelegate {
         playerViewController.dismiss(animated: true, completion: nil)
     }
 }
- */
+// */
 
 
+/*
 class ViewController: UIViewController {
 
     var player: AVPlayer?
@@ -93,8 +105,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let videoURL = URL(string: "https://joy.videvo.net/videvo_files/video/premium/partners0524/large_watermarked/BB_01bbb1fd-672a-4b8c-81fb-34a99ced87d4_preview.mp4")
-        player = AVPlayer(url: videoURL!)
+        /*
+        guard let videoPath = Bundle.main.path(forResource: "test", ofType: "mp4") else {
+                    print("Local video file not found.")
+                    return
+        }
+        let videoURL = URL(fileURLWithPath: videoPath)
+         */
+        let videoURL: URL
+
+        // Check if local file "test.mp4" exists
+        if let localVideoPath = Bundle.main.path(forResource: "tests", ofType: "mp4"),
+           FileManager.default.fileExists(atPath: localVideoPath) {
+            // Local file exists, use it
+            videoURL = URL(fileURLWithPath: localVideoPath)
+        } else {
+            // Local file doesn't exist, use remote URL as fallback
+            videoURL = URL(string: "https://joy.videvo.net/videvo_files/video/premium/partners0524/large_watermarked/BB_01bbb1fd-672a-4b8c-81fb-34a99ced87d4_preview.mp4")!
+        }
+
+        player = AVPlayer(url: videoURL)
 
         playerViewController = AVPlayerViewController()
         playerViewController?.player = player
@@ -122,5 +152,14 @@ extension ViewController: AVPlayerViewControllerDelegate {
         // Dismiss the full screen player when Picture in Picture mode ends
         playerViewController.dismiss(animated: true, completion: nil)
     }
+
+    func playerViewControllerDidFinishDismissalTransition(_ playerViewController: AVPlayerViewController) {
+        player?.pause() // Stop the player
+        // Perform additional actions if needed
+        playerViewController.dismiss(animated: true) {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
 }
 
+*/
