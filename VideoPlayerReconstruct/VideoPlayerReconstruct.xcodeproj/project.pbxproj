@@ -20,6 +20,7 @@
 		AAAB19982A550E97001AC3DE /* ViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19972A550E97001AC3DE /* ViewControllerWrapper.swift */; };
 		AAAB19F02A57AAB3001AC3DE /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19EF2A57AAB3001AC3DE /* Util.swift */; };
 		AAAB19F32A57AB54001AC3DE /* ProcessingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19F22A57AB54001AC3DE /* ProcessingData.swift */; };
+		AAAB19FC2A57EF9B001AC3DE /* JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19FB2A57EF9B001AC3DE /* JsonData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		AAAB19972A550E97001AC3DE /* ViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWrapper.swift; sourceTree = "<group>"; };
 		AAAB19EF2A57AAB3001AC3DE /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		AAAB19F22A57AB54001AC3DE /* ProcessingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingData.swift; sourceTree = "<group>"; };
+		AAAB19FB2A57EF9B001AC3DE /* JsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		AAAB19632A545D15001AC3DE /* VideoPlayerReconstruct */ = {
 			isa = PBXGroup;
 			children = (
+				AAAB19FA2A57EF7F001AC3DE /* ModelData */,
 				AAAB19F12A57AB3C001AC3DE /* Processing */,
 				AAAB19EE2A57AA9D001AC3DE /* Utils */,
 				AAAB198E2A545D47001AC3DE /* Controller */,
@@ -167,6 +170,14 @@
 				AAAB19F22A57AB54001AC3DE /* ProcessingData.swift */,
 			);
 			path = Processing;
+			sourceTree = "<group>";
+		};
+		AAAB19FA2A57EF7F001AC3DE /* ModelData */ = {
+			isa = PBXGroup;
+			children = (
+				AAAB19FB2A57EF9B001AC3DE /* JsonData.swift */,
+			);
+			path = ModelData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +316,7 @@
 				AAAB19962A550E4A001AC3DE /* ViewControllerDelegate.swift in Sources */,
 				AAAB19672A545D15001AC3DE /* ContentView.swift in Sources */,
 				AAAB19F32A57AB54001AC3DE /* ProcessingData.swift in Sources */,
+				AAAB19FC2A57EF9B001AC3DE /* JsonData.swift in Sources */,
 				AAAB19652A545D15001AC3DE /* VideoPlayerReconstructApp.swift in Sources */,
 				AAAB19982A550E97001AC3DE /* ViewControllerWrapper.swift in Sources */,
 			);

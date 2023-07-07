@@ -55,7 +55,7 @@ class ProcessingData {
         }
 
         // /*
-        ProcessData.loadJson(filepath: "ResponseDataPipeline") { (responseData: PipelineResData?) in
+        ProcessData.loadJson(filepath: "ResponseDataPipeline") { (responseData: PipelineData?) in
             if let responseData = responseData {
                 // JSON data is loaded and available as 'responseData' of type 'ResponseData'
                 // Use the data as needed
