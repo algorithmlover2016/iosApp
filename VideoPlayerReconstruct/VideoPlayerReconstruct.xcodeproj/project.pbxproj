@@ -18,6 +18,8 @@
 		AAAB19922A54F2B5001AC3DE /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AAAB19912A54F2B5001AC3DE /* test.mp4 */; };
 		AAAB19962A550E4A001AC3DE /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19952A550E4A001AC3DE /* ViewControllerDelegate.swift */; };
 		AAAB19982A550E97001AC3DE /* ViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19972A550E97001AC3DE /* ViewControllerWrapper.swift */; };
+		AAAB19F02A57AAB3001AC3DE /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19EF2A57AAB3001AC3DE /* Util.swift */; };
+		AAAB19F32A57AB54001AC3DE /* ProcessingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB19F22A57AB54001AC3DE /* ProcessingData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		AAAB19912A54F2B5001AC3DE /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 		AAAB19952A550E4A001AC3DE /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
 		AAAB19972A550E97001AC3DE /* ViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWrapper.swift; sourceTree = "<group>"; };
+		AAAB19EF2A57AAB3001AC3DE /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		AAAB19F22A57AB54001AC3DE /* ProcessingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 		AAAB19632A545D15001AC3DE /* VideoPlayerReconstruct */ = {
 			isa = PBXGroup;
 			children = (
+				AAAB19F12A57AB3C001AC3DE /* Processing */,
+				AAAB19EE2A57AA9D001AC3DE /* Utils */,
 				AAAB198E2A545D47001AC3DE /* Controller */,
 				AAAB19642A545D15001AC3DE /* VideoPlayerReconstructApp.swift */,
 				AAAB19662A545D15001AC3DE /* ContentView.swift */,
@@ -145,6 +151,22 @@
 				AAAB19972A550E97001AC3DE /* ViewControllerWrapper.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		AAAB19EE2A57AA9D001AC3DE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AAAB19EF2A57AAB3001AC3DE /* Util.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AAAB19F12A57AB3C001AC3DE /* Processing */ = {
+			isa = PBXGroup;
+			children = (
+				AAAB19F22A57AB54001AC3DE /* ProcessingData.swift */,
+			);
+			path = Processing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,8 +301,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAAB19902A545D5E001AC3DE /* ViewController.swift in Sources */,
+				AAAB19F02A57AAB3001AC3DE /* Util.swift in Sources */,
 				AAAB19962A550E4A001AC3DE /* ViewControllerDelegate.swift in Sources */,
 				AAAB19672A545D15001AC3DE /* ContentView.swift in Sources */,
+				AAAB19F32A57AB54001AC3DE /* ProcessingData.swift in Sources */,
 				AAAB19652A545D15001AC3DE /* VideoPlayerReconstructApp.swift in Sources */,
 				AAAB19982A550E97001AC3DE /* ViewControllerWrapper.swift in Sources */,
 			);
