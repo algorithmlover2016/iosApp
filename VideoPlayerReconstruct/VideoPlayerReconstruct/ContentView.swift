@@ -57,7 +57,7 @@ struct ContentView: View {
                 Text("Welcome to My App")
                     .font(.largeTitle)
                     .foregroundColor(.white)
-                
+
                 Button(action: {
                     viewControllerDelegate.toggleFileOption()
                     isButtonBlue.toggle()
@@ -70,7 +70,7 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
                 .padding()
-                
+
                 Button(action: {
                     isVideoPlayerPresented = true
                 }) {
@@ -82,7 +82,7 @@ struct ContentView: View {
                         .cornerRadius(10)
                 }
                 .padding()
-                
+
             }
             // .navigationTitle("Home")
             .navigationBarTitle("Home")
