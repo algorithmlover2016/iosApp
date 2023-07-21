@@ -8,6 +8,7 @@
 import Foundation
 import OSLog
 
+/// refer to https://www.avanderlee.com/workflow/oslog-unified-logging/
 extension Logger {
     /// Using your bundle identifier is a great way to ensure a unique identifier.
     private static var subsystem = Bundle.main.bundleIdentifier!
