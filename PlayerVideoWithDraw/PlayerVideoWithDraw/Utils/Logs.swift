@@ -18,7 +18,13 @@ extension Logger {
     /// All logs related to tracking and analytics.
     static let statistics = Logger(subsystem: subsystem, category: "statistics")
 }
-func printLog() {
+
+func printLog(_ message: String, file: String = #file, line: Int = #line, fn: String = #function) {
+    let fileName = URL(fileURLWithPath: file).lastPathComponent
+    print("[\(fileName):\(fn):\(line)] \(message)")
+}
+
+func printLogs() {
     Logger.viewCycle.info("View Appeared!")
     let username = "Example Username"
     Logger.viewCycle.info("User \(username) logged in")
@@ -34,11 +40,5 @@ func printLog() {
     let data = 2312424
     Logger.viewCycle.log("Critical example \(data, format: .decimal, align: .right(columns:3))")
     Logger.viewCycle.log("Critical example \(username, privacy: .private(mask: .hash))")
+    // Logger.statistics.debug("\(person.index) \(person.name, align: .left(columns: Person.maxNameLength)) \(person.identifier) \(person.age, format: .fixed(precision: 2))")
 }
-
-/*
-func log(_ person: Person) {
-    Logger.statistics.debug("\(person.index) \(person.name, align: .left(columns: Person.maxNameLength)) \(person.identifier) \(person.age, format: .fixed(precision: 2))")
-}
- */
-

@@ -6,19 +6,39 @@
 //
 
 import Foundation
+
 struct Person: Codable {
     let index: Int
     let name: String
     let identifier: String
     let age: Double
 
-    // Add your custom init method here if needed.
-
     enum CodingKeys: String, CodingKey {
         case index
         case name
         case identifier
         case age
+    }
+
+    init(index: Int, name: String, identifier: String, age: Double) {
+        self.index = index
+        self.name = name
+        self.identifier = identifier
+        self.age = age
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        index = try container.decode(Int.self, forKey: .index)
+        name = try container.decode(String.self, forKey: .name)
+        identifier = try container.decode(String.self, forKey: .identifier)
+
+        // Handle missing age key by using a default value
+        if let age = try container.decodeIfPresent(Double.self, forKey: .age) {
+            self.age = age
+        } else {
+            self.age = 0.0 // Default age value when the key is missing
+        }
     }
 }
 
@@ -51,7 +71,6 @@ func test() {
 
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase
-    decoder.ignoreUnknownKeys = true // Ignore unknown keys during decoding
 
     do {
         let jsonData = jsonString.data(using: .utf8)!
