@@ -34,20 +34,22 @@ class VideoManager: ObservableObject {
     // Fetching the videos asynchronously
     func findVideos(topic: Query) async {
         do {
-        // Make sure we have a URL before continuing
-        guard let url = URL(string: "https://api.pexels.com/videos/search?query=\(topic)&per_page=10&orientation=portrait") else { fatalError("Missing URL") }
-        
-        // Create a URLRequest
-        var urlRequest = URLRequest(url: url)
-        
-        // Setting the Authorization header of the HTTP request - replace YOUR_API_KEY by your own API key
-        urlRequest.setValue("YOUR_API_KEY", forHTTPHeaderField: "Authorization")
-        
+            // Make sure we have a URL before continuing
+            guard let url = URL(string: "https://api.pexels.com/videos/search?query=\(topic)&per_page=10&orientation=portrait") else { fatalError("Missing URL") }
+            
+            // Create a URLRequest
+            var urlRequest = URLRequest(url: url)
+            
+            // Setting the Authorization header of the HTTP request - replace YOUR_API_KEY by your own API key
+            urlRequest.setValue("YOUR_API_KEY", forHTTPHeaderField: "Authorization")
+            
             // Fetching the data
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
             
             // Making sure the response is 200 OK before continuing
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                fatalError("Error while fetching data")
+            }
             
             // Creating a JSONDecoder instance
             let decoder = JSONDecoder()
@@ -66,7 +68,7 @@ class VideoManager: ObservableObject {
                 // Assigning the videos we fetched from the API
                 self.videos = decodedData.videos
             }
-
+            
         } catch {
             // If we run into an error, print the error in the console
             print("Error fetching data from Pexels: \(error)")
