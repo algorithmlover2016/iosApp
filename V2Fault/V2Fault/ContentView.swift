@@ -37,59 +37,45 @@ struct ContentView: View {
                 .padding()
 
             TextField("Enter your question", text: $textInput)
-                           .padding()
-                           .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
 
-            Button(action: { [self] in
-                // Handle voice recording logic
-                audioRecorderManager.isRecording.toggle()
-                
-                if audioRecorderManager.isRecording {
-                    audioRecorderManager.startRecording()
-                } else {
-                    audioRecorderManager.stopRecording()
-                }
-            }) {
-                Image(systemName: audioRecorderManager.isRecording ? "mic.fill" : "mic")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(audioRecorderManager.isRecording ? .red : .primary)
-            }
-            .padding()
-            
-            
-            Button(action: { [self] in
-                // Handle audio playback logic
-                if let audioURL = audioRecorderManager.audioURL {
-                    if audioPlayerManager.isPlaying {
-                        audioPlayerManager.stopAudio()
+            HStack { // Use HStack to arrange buttons horizontally
+                Button(action: { [self] in
+                    // Handle voice recording logic
+                    audioRecorderManager.isRecording.toggle()
+
+                    if audioRecorderManager.isRecording {
+                        audioRecorderManager.startRecording()
                     } else {
-                        audioPlayerManager.playAudio(url: audioURL)
+                        audioRecorderManager.stopRecording()
                     }
+                }) {
+                    Image(systemName: audioRecorderManager.isRecording ? "mic.fill" : "mic")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(audioRecorderManager.isRecording ? .red : .primary)
                 }
-            }) {
-                Image(systemName: audioPlayerManager.isPlaying ? "stop.fill" : "play.fill")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.green) // Adjust color as needed
+                .padding()
+
+                Button(action: { [self] in
+                    // Handle audio playback logic
+                    if let audioURL = audioRecorderManager.audioURL {
+                        if audioPlayerManager.isPlaying {
+                            audioPlayerManager.stopAudio()
+                        } else {
+                            audioPlayerManager.playAudio(url: audioURL)
+                        }
+                    }
+                }) {
+                    Image(systemName: audioPlayerManager.isPlaying ? "stop.fill" : "play.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.green) // Adjust color as needed
+                }
+                .padding()
+
             }
-            .padding()
-            
-            /*
-             Button(action: {
-             // Handle camera logic
-             self.isCameraActive.toggle()
-             }) {
-             Image(systemName: "camera")
-             .resizable()
-             .frame(width: 30, height: 30)
-             .foregroundColor(.primary)
-             }
-             .sheet(isPresented: $isCameraActive) {
-             // Present camera view here
-             Text("Camera View")
-             }
-             */
             Button(action: {
                 // Handle camera logic
                 self.isCameraActive.toggle()
@@ -103,28 +89,26 @@ struct ContentView: View {
                 // Present camera view here
                 ImagePicker(selectedImage: self.$selectedImage)
                     .edgesIgnoringSafeArea(.all) // Ignore safe area to allow landscape orientation
-                
+
             }
-            
+
             if let selectedImage = selectedImage {
+                Text("Input image is the following:")
+                    .padding()
                 Image(uiImage: selectedImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 200)
                     .padding()
             }
-            
-            Text("Your question is: \(textInput)")
+
+            Text("Your input Text question is: \(textInput)")
                 .padding()
-            
-            
+
+
         }
         .padding()
     }
-    
-    private func startRecording() {}
-    
-    private func stopRecording() {}
 }
 
 class AudioRecorderManager: NSObject, ObservableObject, AVAudioRecorderDelegate {
@@ -132,25 +116,25 @@ class AudioRecorderManager: NSObject, ObservableObject, AVAudioRecorderDelegate 
     @Published var audioURL: URL? // Expose the audioURL property
     var audioRecorder: AVAudioRecorder!
 
-    
+
     func startRecording() {
         // Implementation for starting recording
         let audioSession = AVAudioSession.sharedInstance()
-        
+
         do {
             try audioSession.setCategory(.playAndRecord, mode: .default, options: [])
             try audioSession.setActive(true)
-            
+
             let audioSettings = [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                 AVSampleRateKey: 12000,
                 AVNumberOfChannelsKey: 1,
                 AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
             ]
-            
+
             let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             let audioFilename = documentsPath.appendingPathComponent("audioRecording.m4a")
-            
+
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: audioSettings)
             audioRecorder.delegate = self
             audioRecorder.record()
@@ -159,7 +143,7 @@ class AudioRecorderManager: NSObject, ObservableObject, AVAudioRecorderDelegate 
             print("Error starting audio recording: \(error.localizedDescription)")
         }
     }
-    
+
     func stopRecording() {
         audioRecorder.stop()
         let audioSession = AVAudioSession.sharedInstance()
@@ -173,7 +157,7 @@ class AudioRecorderManager: NSObject, ObservableObject, AVAudioRecorderDelegate 
         // Set the audioURL property after recording is stopped
         audioURL = audioRecorder.url
     }
-    
+
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         // Handle audio recording finish
         if flag {
@@ -183,14 +167,14 @@ class AudioRecorderManager: NSObject, ObservableObject, AVAudioRecorderDelegate 
             // Handle recording failure
             print("Audio recording failed")
         }
-        
+
     }
 }
 
 class AudioPlayerManager: NSObject, ObservableObject, AVAudioPlayerDelegate {
     @Published var isPlaying: Bool = false
     var audioPlayer: AVAudioPlayer?
-    
+
     func playAudio(url: URL) {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
@@ -203,19 +187,19 @@ class AudioPlayerManager: NSObject, ObservableObject, AVAudioPlayerDelegate {
             print("Error playing audio: \(error.localizedDescription)")
         }
     }
-    
+
     func stopAudio() {
         audioPlayer?.stop()
         isPlaying = false
     }
-    
+
     // Implement AVAudioPlayerDelegate methods if needed
 }
 
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
-    
+
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
@@ -223,25 +207,25 @@ struct ImagePicker: UIViewControllerRepresentable {
         picker.cameraCaptureMode = .photo
         return picker
     }
-    
+
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(parent: self)
     }
-    
+
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         var parent: ImagePicker
-        
+
         init(parent: ImagePicker) {
             self.parent = parent
         }
-        
+
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let selectedImage = info[.originalImage] as? UIImage {
                 parent.selectedImage = selectedImage
             }
-            
+
             picker.dismiss(animated: true)
         }
     }
