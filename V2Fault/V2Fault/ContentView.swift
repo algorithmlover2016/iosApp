@@ -33,12 +33,18 @@ struct ContentView: View {
                 .frame(width: 50, height: 50)
                 .foregroundColor(.blue)
                 .padding()
+
             Text("Welcome to use Fault Detection!")
                 .padding()
 
             TextField("Enter your question", text: $textInput)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+            // Display input text if not empty
+            if !textInput.isEmpty {
+                Text("Input Text Is: \(textInput)")
+                    .padding()
+            }
 
             HStack { // Use HStack to arrange buttons horizontally
                 Button(action: { [self] in
@@ -57,7 +63,29 @@ struct ContentView: View {
                         .foregroundColor(audioRecorderManager.isRecording ? .red : .primary)
                 }
                 .padding()
+                // Display audio player if there is a recorded audio file
+                if let audioURL = audioRecorderManager.audioURL {
+                    HStack {
+                        Text("Audio Recording:")
+                        Button(action: { [self] in
+                            // Handle audio playback logic
+                            if audioPlayerManager.isPlaying {
+                                audioPlayerManager.stopAudio()
+                            } else {
+                                audioPlayerManager.playAudio(url: audioURL)
+                            }
+                        }) {
+                            Image(systemName: audioPlayerManager.isPlaying ? "stop.fill" : "play.fill")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.green)
+                        }
+                    }
+                    .padding()
+                }
 
+
+                /*
                 Button(action: { [self] in
                     // Handle audio playback logic
                     if let audioURL = audioRecorderManager.audioURL {
@@ -75,35 +103,40 @@ struct ContentView: View {
                 }
                 .padding()
 
-            }
-            Button(action: {
-                // Handle camera logic
-                self.isCameraActive.toggle()
-            }) {
-                Image(systemName: "camera")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.primary)
-            }
-            .sheet(isPresented: $isCameraActive) {
-                // Present camera view here
-                ImagePicker(selectedImage: self.$selectedImage)
-                    .edgesIgnoringSafeArea(.all) // Ignore safe area to allow landscape orientation
-
+                 */
             }
 
-            if let selectedImage = selectedImage {
-                Text("Input image is the following:")
-                    .padding()
-                Image(uiImage: selectedImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
-                    .padding()
-            }
+            HStack {
+                Button(action: {
+                    // Handle camera logic
+                    self.isCameraActive.toggle()
+                }) {
+                    Image(systemName: "camera")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.primary)
+                }
+                .sheet(isPresented: $isCameraActive) {
+                    // Present camera view here
+                    ImagePicker(selectedImage: self.$selectedImage)
+                        .edgesIgnoringSafeArea(.all) // Ignore safe area to allow landscape orientation
 
-            Text("Your input Text question is: \(textInput)")
-                .padding()
+                }
+
+                // Display selected image if available
+                if let selectedImage = selectedImage {
+                    VStack {
+                        Text("Input Image Is :")
+                            .padding()
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 200, height: 200)
+                            .padding()
+                    }
+                }
+
+            }
 
 
         }
