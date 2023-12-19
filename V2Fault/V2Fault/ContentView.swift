@@ -20,7 +20,6 @@ struct ContentView: View {
     @State private var textInput: String = ""
     @State private var isRecording: Bool = false
     @State private var isCameraActive: Bool = false
-    // @State private var audioRecorder: AVAudioRecorder!
     @StateObject private var audioRecorderManager = AudioRecorderManager()
     @StateObject private var audioPlayerManager = AudioPlayerManager()
 
@@ -67,6 +66,8 @@ struct ContentView: View {
                 if let audioURL = audioRecorderManager.audioURL {
                     HStack {
                         Text("Audio Recording:")
+                            .bold()
+                            .foregroundColor(.blue)
                         Button(action: { [self] in
                             // Handle audio playback logic
                             if audioPlayerManager.isPlaying {
@@ -106,7 +107,7 @@ struct ContentView: View {
                  */
             }
 
-            HStack {
+            VStack {
                 Button(action: {
                     // Handle camera logic
                     self.isCameraActive.toggle()
@@ -125,9 +126,10 @@ struct ContentView: View {
 
                 // Display selected image if available
                 if let selectedImage = selectedImage {
-                    VStack {
-                        Text("Input Image Is :")
-                            .padding()
+                    HStack {
+                        Text("Input Image Is:")
+                            .bold()
+                            .foregroundColor(.blue)
                         Image(uiImage: selectedImage)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
