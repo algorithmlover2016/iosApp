@@ -140,9 +140,43 @@ struct ContentView: View {
 
             }
 
+            HStack {
+                // Reset button
+                Button(action: { [self] in
+                    reset()
+                }) {
+                    Text("Reset")
+                        .bold()
+                        .foregroundColor(.red)
+                }
+                .padding()
 
+                // Submit button
+                Button(action: { [self] in
+                    submit()
+                }) {
+                    Text("Submit")
+                        .bold()
+                        .foregroundColor(.blue)
+                }
+                .padding()
+            }
         }
         .padding()
+    }
+
+    private func reset() {
+        textInput = ""
+        isRecording = false
+        audioRecorderManager.stopRecording()
+        audioPlayerManager.stopAudio()
+        audioRecorderManager.audioURL = nil
+        selectedImage = nil
+    }
+
+    private func submit() {
+        // Implement logic to send a request to the endpoint
+        // You can use URLSession, Alamofire, or any other networking library here
     }
 }
 
