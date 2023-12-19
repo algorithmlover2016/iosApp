@@ -15,6 +15,7 @@
 import SwiftUI
 import AVFoundation
 import UIKit
+import AudioKit
 
 struct ContentView: View {
     @State private var textInput: String = ""
@@ -84,27 +85,6 @@ struct ContentView: View {
                     }
                     .padding()
                 }
-
-
-                /*
-                Button(action: { [self] in
-                    // Handle audio playback logic
-                    if let audioURL = audioRecorderManager.audioURL {
-                        if audioPlayerManager.isPlaying {
-                            audioPlayerManager.stopAudio()
-                        } else {
-                            audioPlayerManager.playAudio(url: audioURL)
-                        }
-                    }
-                }) {
-                    Image(systemName: audioPlayerManager.isPlaying ? "stop.fill" : "play.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.green) // Adjust color as needed
-                }
-                .padding()
-
-                 */
             }
 
             VStack {
@@ -153,9 +133,9 @@ struct ContentView: View {
 
                 // Submit button
                 Button(action: { [self] in
-                    submit()
+                    send()
                 }) {
-                    Text("Submit")
+                    Text("Send")
                         .bold()
                         .foregroundColor(.blue)
                 }
@@ -174,7 +154,7 @@ struct ContentView: View {
         selectedImage = nil
     }
 
-    private func submit() {
+    private func send() {
         // Implement logic to send a request to the endpoint
         // You can use URLSession, Alamofire, or any other networking library here
     }
@@ -225,6 +205,36 @@ class AudioRecorderManager: NSObject, ObservableObject, AVAudioRecorderDelegate 
         // Implementation for stopping recording
         // Set the audioURL property after recording is stopped
         audioURL = audioRecorder.url
+
+        // /*
+        // Convert the recorded audio to WAV using AudioKit
+        convertToWAV()
+        // */
+
+    }
+    // /*
+    private func convertToWAV() {
+        guard let m4aFilePath = audioRecorder.url.path as NSString? else { return }
+        let wavFilePath = m4aFilePath.deletingPathExtension + ".wav"
+        print("wavFilePath: \(wavFilePath)")
+
+        var options = FormatConverter.Options()
+        // any options left nil will assume the value of the input file
+        options.format = .wav
+        options.sampleRate = 48000
+        options.bitDepth = 24
+
+        let inputURL = URL(fileURLWithPath: m4aFilePath as String)
+        let outputURL = URL(fileURLWithPath: wavFilePath)
+        let converter = FormatConverter(inputURL: inputURL, outputURL: outputURL, options: options)
+        converter.start { error in
+            if let error = error {
+                print("Error converting audio: \(error.localizedDescription)")
+            } else {
+                print("Audio conversion successful")
+                self.audioURL = outputURL
+            }
+        }
     }
 
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
@@ -236,7 +246,6 @@ class AudioRecorderManager: NSObject, ObservableObject, AVAudioRecorderDelegate 
             // Handle recording failure
             print("Audio recording failed")
         }
-
     }
 }
 
