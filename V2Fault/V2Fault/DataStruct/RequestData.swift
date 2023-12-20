@@ -10,11 +10,13 @@ struct DataToSend: Codable {
     var textInput: String?
     var audioBase64: String?
     var imageBase64: String?
+    var uuid: String?
 
-    init(textInput: String? = nil, audioBase64: String? = nil, imageBase64: String? = nil) {
+    init(textInput: String? = nil, audioBase64: String? = nil, imageBase64: String? = nil, uuid: String? = nil) {
         self.textInput = textInput
         self.audioBase64 = audioBase64
         self.imageBase64 = imageBase64
+        self.uuid = uuid
     }
 }
 struct ServerResponse: Codable {

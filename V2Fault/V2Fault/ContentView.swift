@@ -27,6 +27,7 @@ struct ContentView: View {
     @State private var decodedAudio: Data?
 
     @State private var selectedImage: UIImage?
+    @State private var uuid: UUID = UUID()  // Add a state property for the UUID
 
     var body: some View {
         VStack {
@@ -167,7 +168,10 @@ struct ContentView: View {
             }
 
         }
-
+        .onAppear {
+            // Generate a new UUID when the view appears
+            uuid = UUID()
+        }
         .padding()
     }
 
@@ -178,6 +182,8 @@ struct ContentView: View {
         audioPlayerManager.stopAudio()
         audioRecorderManager.audioURL = nil
         selectedImage = nil
+        // Generate a new UUID when the reset button is pressed
+        uuid = UUID()
     }
 
     private func send() {
@@ -199,7 +205,7 @@ struct ContentView: View {
         }
 
 
-        let dataToSend = DataToSend(textInput: textInput, audioBase64: audioBase64, imageBase64: imageBase64)
+        let dataToSend = DataToSend(textInput: textInput, audioBase64: audioBase64, imageBase64: imageBase64, uuid: uuid.uuidString)
 
         guard let jsonData = try? JSONEncoder().encode(dataToSend) else {
             print("Error encoding data to JSON")
