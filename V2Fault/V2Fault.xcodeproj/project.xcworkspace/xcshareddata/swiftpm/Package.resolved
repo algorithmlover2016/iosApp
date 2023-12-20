@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "audiokit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AudioKit/AudioKit",
+      "state" : {
+        "revision" : "82cab9d4c168b5b03b67e2ff099819f589b530f7",
+        "version" : "5.6.2"
+      }
+    },
+    {
+      "identity" : "lame-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bb9z/LAME-xcframework",
+      "state" : {
+        "revision" : "4162c4d2b8aa9fcae29464ce7187a2ba16f50f04",
+        "version" : "3.100.0"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -16,6 +16,9 @@
 		AA446CB22B313F9700D1B06B /* V2FaultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA446CB12B313F9700D1B06B /* V2FaultTests.swift */; };
 		AA446CBC2B313F9700D1B06B /* V2FaultUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA446CBB2B313F9700D1B06B /* V2FaultUITests.swift */; };
 		AA446CBE2B313F9700D1B06B /* V2FaultUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA446CBD2B313F9700D1B06B /* V2FaultUITestsLaunchTests.swift */; };
+		AAEDB0E62B328C530097312F /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEDB0E52B328C530097312F /* Audio.swift */; };
+		AAEDB0E82B328CC70097312F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEDB0E72B328CC70097312F /* Camera.swift */; };
+		AAEDB0EB2B328E520097312F /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEDB0EA2B328E520097312F /* RequestData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		AA446CB72B313F9700D1B06B /* V2FaultUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = V2FaultUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA446CBB2B313F9700D1B06B /* V2FaultUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2FaultUITests.swift; sourceTree = "<group>"; };
 		AA446CBD2B313F9700D1B06B /* V2FaultUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2FaultUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AAEDB0E52B328C530097312F /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		AAEDB0E72B328CC70097312F /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		AAEDB0EA2B328E520097312F /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,8 @@
 		AA446C9F2B313F9500D1B06B /* V2Fault */ = {
 			isa = PBXGroup;
 			children = (
+				AAEDB0E92B328E3E0097312F /* DataStruct */,
+				AAEDB0E42B328C370097312F /* FaultModels */,
 				AA446CA02B313F9500D1B06B /* V2FaultApp.swift */,
 				AA446CA22B313F9500D1B06B /* ContentView.swift */,
 				AA446CA42B313F9700D1B06B /* Assets.xcassets */,
@@ -129,6 +137,23 @@
 				AA446CBD2B313F9700D1B06B /* V2FaultUITestsLaunchTests.swift */,
 			);
 			path = V2FaultUITests;
+			sourceTree = "<group>";
+		};
+		AAEDB0E42B328C370097312F /* FaultModels */ = {
+			isa = PBXGroup;
+			children = (
+				AAEDB0E52B328C530097312F /* Audio.swift */,
+				AAEDB0E72B328CC70097312F /* Camera.swift */,
+			);
+			path = FaultModels;
+			sourceTree = "<group>";
+		};
+		AAEDB0E92B328E3E0097312F /* DataStruct */ = {
+			isa = PBXGroup;
+			children = (
+				AAEDB0EA2B328E520097312F /* RequestData.swift */,
+			);
+			path = DataStruct;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +294,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEDB0E82B328CC70097312F /* Camera.swift in Sources */,
+				AAEDB0E62B328C530097312F /* Audio.swift in Sources */,
 				AA446CA32B313F9500D1B06B /* ContentView.swift in Sources */,
+				AAEDB0EB2B328E520097312F /* RequestData.swift in Sources */,
 				AA446CA12B313F9500D1B06B /* V2FaultApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

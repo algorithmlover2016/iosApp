@@ -23,6 +23,8 @@ struct ContentView: View {
     @State private var isCameraActive: Bool = false
     @StateObject private var audioRecorderManager = AudioRecorderManager()
     @StateObject private var audioPlayerManager = AudioPlayerManager()
+    @State private var decodedText: String?
+    @State private var decodedAudio: Data?
 
     @State private var selectedImage: UIImage?
 
@@ -141,7 +143,31 @@ struct ContentView: View {
                 }
                 .padding()
             }
+
+            // Display play button for decoded audio
+            if let decodedAudio = decodedAudio {
+                Button(action: {
+                    // Handle playing the decoded audio
+                    playDecodedAudio(data: decodedAudio)
+                }) {
+                    Image(systemName: "play.circle.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.green)
+                }
+                .padding()
+            }
+            // Display decoded text
+            if let decodedText = decodedText {
+                Text("Decoded Text:")
+                    .bold()
+                    .foregroundColor(.blue)
+                Text(decodedText)
+                    .padding()
+            }
+
         }
+
         .padding()
     }
 
@@ -157,154 +183,89 @@ struct ContentView: View {
     private func send() {
         // Implement logic to send a request to the endpoint
         // You can use URLSession, Alamofire, or any other networking library here
-    }
-}
-
-class AudioRecorderManager: NSObject, ObservableObject, AVAudioRecorderDelegate {
-    @Published var isRecording: Bool = false
-    @Published var audioURL: URL? // Expose the audioURL property
-    var audioRecorder: AVAudioRecorder!
-
-
-    func startRecording() {
-        // Implementation for starting recording
-        let audioSession = AVAudioSession.sharedInstance()
-
-        do {
-            try audioSession.setCategory(.playAndRecord, mode: .default, options: [])
-            try audioSession.setActive(true)
-
-            let audioSettings = [
-                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-                AVSampleRateKey: 12000,
-                AVNumberOfChannelsKey: 1,
-                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-            ]
-
-            let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let audioFilename = documentsPath.appendingPathComponent("audioRecording.m4a")
-
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: audioSettings)
-            audioRecorder.delegate = self
-            audioRecorder.record()
-        } catch {
-            // Handle errors
-            print("Error starting audio recording: \(error.localizedDescription)")
+        var audioBase64 :String? = nil
+        var imageBase64 :String? = nil
+        if let audioURL = audioRecorderManager.audioURL {
+            audioBase64 = base64Encode(audioURL)
         }
-    }
-
-    func stopRecording() {
-        audioRecorder.stop()
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setActive(false)
-        } catch {
-            // Handle errors
-            print("Error stopping audio recording: \(error.localizedDescription)")
+        if let imageData = selectedImage?.jpegData(compressionQuality: 1.0) {
+            imageBase64 = imageData.base64EncodedString()
         }
-        // Implementation for stopping recording
-        // Set the audioURL property after recording is stopped
-        audioURL = audioRecorder.url
 
-        // /*
-        // Convert the recorded audio to WAV using AudioKit
-        convertToWAV()
-        // */
+        // Check if at least one of the values is not nil
+        guard textInput.isNotEmpty || audioBase64 != nil || imageBase64 != nil else {
+            print("All three values (textInput, audio, and image) are nil. Nothing to send.")
+            return
+        }
 
-    }
-    // /*
-    private func convertToWAV() {
-        guard let m4aFilePath = audioRecorder.url.path as NSString? else { return }
-        let wavFilePath = m4aFilePath.deletingPathExtension + ".wav"
-        print("wavFilePath: \(wavFilePath)")
 
-        var options = FormatConverter.Options()
-        // any options left nil will assume the value of the input file
-        options.format = .wav
-        options.sampleRate = 48000
-        options.bitDepth = 24
+        let dataToSend = DataToSend(textInput: textInput, audioBase64: audioBase64, imageBase64: imageBase64)
 
-        let inputURL = URL(fileURLWithPath: m4aFilePath as String)
-        let outputURL = URL(fileURLWithPath: wavFilePath)
-        let converter = FormatConverter(inputURL: inputURL, outputURL: outputURL, options: options)
-        converter.start { error in
+        guard let jsonData = try? JSONEncoder().encode(dataToSend) else {
+            print("Error encoding data to JSON")
+            return
+        }
+
+        guard let url = URL(string: "https://www.example.com/rec") else {
+            print("Invalid URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            // Handle the response or error as needed
             if let error = error {
-                print("Error converting audio: \(error.localizedDescription)")
-            } else {
-                print("Audio conversion successful")
-                self.audioURL = outputURL
+                print("Error: \(error.localizedDescription)")
+            } else if let data = data {
+                do {
+                    // Decode JSON response
+                    let decoder = JSONDecoder()
+                    let serverResponse = try decoder.decode(ServerResponse.self, from: data)
+
+                    // Access data fields
+                    let textData = serverResponse.data.text
+                    let audioData = serverResponse.data.audio
+
+                    // Update ContentView properties
+                    decodedText = textData
+                    decodedAudio = audioData?.base64DecodedData
+
+                    // Handle the data as needed
+                    print("Code: \(serverResponse.code)")
+                    print("Error Message: \(serverResponse.errormsg)")
+                    print("Text Data: \(textData ?? "N/A")")
+                    print("Audio Data: \(audioData ?? "N/A")")
+                } catch {
+                    print("Error decoding JSON: \(error.localizedDescription)")
+                }
             }
-        }
+        }.resume()
     }
 
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        // Handle audio recording finish
-        if flag {
-            // Handle successful recording
-            print("Audio recording successful")
-        } else {
-            // Handle recording failure
-            print("Audio recording failed")
-        }
-    }
-}
-
-class AudioPlayerManager: NSObject, ObservableObject, AVAudioPlayerDelegate {
-    @Published var isPlaying: Bool = false
-    var audioPlayer: AVAudioPlayer?
-
-    func playAudio(url: URL) {
+    private func base64Encode(_ url: URL) -> String {
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.delegate = self
-            audioPlayer?.prepareToPlay()
-            audioPlayer?.play()
-            isPlaying = true
+            let audioData = try Data(contentsOf: url)
+            return audioData.base64EncodedString()
         } catch {
-            // Handle errors
-            print("Error playing audio: \(error.localizedDescription)")
+            print("Error encoding audio data to base64: \(error.localizedDescription)")
+            return ""
         }
     }
+    private func playDecodedAudio(data: Data) {
+        do {
+            // Decode base64 audio data
+            let decodedData = Data(base64Encoded: data)
 
-    func stopAudio() {
-        audioPlayer?.stop()
-        isPlaying = false
-    }
-
-    // Implement AVAudioPlayerDelegate methods if needed
-}
-
-
-struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var selectedImage: UIImage?
-
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.delegate = context.coordinator
-        picker.sourceType = .camera
-        picker.cameraCaptureMode = .photo
-        return picker
-    }
-
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(parent: self)
-    }
-
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        var parent: ImagePicker
-
-        init(parent: ImagePicker) {
-            self.parent = parent
-        }
-
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let selectedImage = info[.originalImage] as? UIImage {
-                parent.selectedImage = selectedImage
+            // Play the audio
+            if let audioData = decodedData {
+                audioPlayerManager.playAudio(data: audioData)
             }
-
-            picker.dismiss(animated: true)
+        } catch {
+            print("Error decoding audio data: \(error.localizedDescription)")
         }
     }
 }
