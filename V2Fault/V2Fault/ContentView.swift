@@ -220,10 +220,12 @@ struct ContentView: View {
     }
     private func cleanRequest() {
         textInput = ""
+
         isRecording = false
         audioRecorderManager.stopRecording()
         audioPlayerManager.stopAudio()
         audioRecorderManager.audioURL = nil
+
         selectedImage = nil
     }
     private func cleanResponse() {
