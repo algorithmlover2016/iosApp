@@ -317,22 +317,30 @@ struct ContentView: View {
             return ""
         }
     }
-    private func playDecodedAudio(data: Data) {
+    private func playDecodedAudio(data: Data?) {
         do {
             // Decode base64 audio data
-            let decodedData = Data(base64Encoded: data)
-            print("decodedData: \(String(describing: decodedData))")
-            if decodedData != nil {
+            print("input data: \(String(describing: data))")
+            // let decodedData = Data(base64Encoded: data)
+            if let decodedData = data {
+                print("decodedData: \(String(describing: decodedData))")
                 // Save decodedData to a temporary file
+                /*
+                // no need to local file.
                 let tempWavURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.wav")
-                try decodedData!.write(to: tempWavURL, options: .atomic)
+                try decodedData.write(to: tempWavURL, options: .atomic)
+                */
                 
+                /*
+                // no need to transform to m4a file.
                 // Convert WAV to M4A using AVAssetExportSession
                 let tempM4AURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.m4a")
                 try convertWAVtoM4A(inputURL: tempWavURL, outputURL: tempM4AURL)
+                 */
                 
                 // Play the M4A audio
-                audioPlayerManager.playAudio(url: tempM4AURL)
+                // audioPlayerManager.playAudio(url: tempWavURL)
+                audioPlayerManager.playAudio(data: decodedData)
             } else {
                 print("Error decoding audio because decodedData is nil")
             }

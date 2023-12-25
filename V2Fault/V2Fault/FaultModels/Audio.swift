@@ -115,7 +115,7 @@ class AudioPlayerManager: NSObject, ObservableObject, AVAudioPlayerDelegate {
             isPlaying = true
         } catch {
             // Handle errors
-            print("Error playing audio: \(error.localizedDescription)")
+            print("Error playing audio with url: \(error.localizedDescription)")
         }
     }
     func playAudio(data: Data) {
@@ -128,7 +128,7 @@ class AudioPlayerManager: NSObject, ObservableObject, AVAudioPlayerDelegate {
             isPlaying = true
         } catch {
             // Handle errors
-            print("Error playing audio: \(error.localizedDescription)")
+            print("Error playing audio with data: \(error.localizedDescription)")
         }
     }
 
