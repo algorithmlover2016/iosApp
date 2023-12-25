@@ -26,6 +26,9 @@ struct ContentView: View {
     @State private var decodedText: String?
     @State private var decodedAudio: Data?
 
+    @State private var isResAudioPlaying = false
+    @StateObject private var resAudioPlayerManager = AudioPlayerManager()
+
     @State private var selectedImage: UIImage?
     @State private var uuid: UUID = UUID()  // Add a state property for the UUID
 
@@ -145,6 +148,7 @@ struct ContentView: View {
                 .padding()
             }
 
+            /*
             // Display play button for decoded audio
             if let decodedAudio = decodedAudio {
                 Button(action: {
@@ -159,6 +163,29 @@ struct ContentView: View {
                 }
                 .padding()
             }
+             */
+            if let decodedAudio = decodedAudio {
+                Button(action: {
+                    // Toggle the play/pause state
+                    isResAudioPlaying.toggle()
+
+                    // Handle playing or stopping the decoded audio based on the state
+                    if isResAudioPlaying {
+                        playDecodedAudio(data: decodedAudio)
+                    } else {
+                        // Stop the audio playback
+                        resAudioPlayerManager.stopAudio()
+                    }
+                }) {
+                    Image(systemName: isResAudioPlaying ? "pause.circle.fill" : "play.circle.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.green)
+                }
+                .padding()
+            }
+
+            /*
             // Display decoded text
             if let decodedText = decodedText {
                 Text("Decoded Text:")
@@ -166,6 +193,22 @@ struct ContentView: View {
                     .foregroundColor(.blue)
                 Text(decodedText)
                     .padding()
+            }
+             */
+            // Display decoded text in a scrollable box
+            if let decodedText = decodedText {
+                VStack {
+                    Text("Decoded Text:")
+                        .bold()
+                        .foregroundColor(.blue)
+
+                    ScrollView {
+                        Text(decodedText)
+                            .padding()
+                    }
+                    .frame(maxHeight: 150) // Set the maximum height for the scrollable box
+                    .border(Color.blue, width: 1) // Add a border for better visibility
+                }
             }
 
         }
@@ -175,14 +218,24 @@ struct ContentView: View {
         }
         .padding()
     }
-
-    private func reset() {
+    private func cleanRequest() {
         textInput = ""
         isRecording = false
         audioRecorderManager.stopRecording()
         audioPlayerManager.stopAudio()
         audioRecorderManager.audioURL = nil
         selectedImage = nil
+    }
+    private func cleanResponse() {
+        isResAudioPlaying = false
+        resAudioPlayerManager.stopAudio()
+        decodedText = nil
+        decodedAudio = nil
+    }
+
+    private func reset() {
+        cleanRequest()
+        cleanResponse()
         // Generate a new UUID when the reset button is pressed
         uuid = UUID()
     }
@@ -213,19 +266,19 @@ struct ContentView: View {
             return
         }
         // print("encoding jsondata\n: \(String(data: jsonData, encoding: .utf8) ?? "Error converting to string")")
-        
+
         /*
          for debug
         do {
             // Get the documents directory
             let documentsDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            
+
             // Append the file name to the directory
             let fileURL = documentsDirectory.appendingPathComponent("send.log")
-            
+
             // Write the JSON data to the file
             try jsonData.write(to: fileURL)
-            
+
             print("JSON data written to \(fileURL)")
         } catch {
             print("Error writing JSON data to file: \(error.localizedDescription)")
@@ -244,6 +297,8 @@ struct ContentView: View {
         // Increase timeout interval
         request.timeoutInterval = 90 // or any other value in seconds
         print("request json data:\(String(describing: jsonData))")
+        cleanResponse()
+
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             // Handle the response or error as needed
@@ -258,19 +313,19 @@ struct ContentView: View {
                     do {
                         // Get the documents directory
                         let documentsDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                        
+
                         // Append the file name to the directory
                         let fileURL = documentsDirectory.appendingPathComponent("response.log")
-                        
+
                         // Write the JSON data to the file
                         try data.write(to: fileURL)
-                        
+
                         print("JSON data written to \(fileURL)")
                     } catch {
                         print("Error writing JSON data to file: \(error.localizedDescription)")
                     }
                      */
-                    
+
                     // Decode JSON response
                     let decoder = JSONDecoder()
                     let dataContainer = try decoder.decode(DataContainer.self, from: data)
@@ -298,6 +353,7 @@ struct ContentView: View {
                     }
                     */
 
+                    cleanRequest()
                     // Handle the data as needed
                     print("Text Data: \(textData?.count ?? -1)")
                     print("Audio Data: \(audioData?.count ?? -1)")
@@ -330,17 +386,17 @@ struct ContentView: View {
                 let tempWavURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.wav")
                 try decodedData.write(to: tempWavURL, options: .atomic)
                 */
-                
+
                 /*
                 // no need to transform to m4a file.
                 // Convert WAV to M4A using AVAssetExportSession
                 let tempM4AURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.m4a")
                 try convertWAVtoM4A(inputURL: tempWavURL, outputURL: tempM4AURL)
                  */
-                
+
                 // Play the M4A audio
-                // audioPlayerManager.playAudio(url: tempWavURL)
-                audioPlayerManager.playAudio(data: decodedData)
+                // resAudioPlayerManager.playAudio(url: tempWavURL)
+                resAudioPlayerManager.playAudio(data: decodedData)
             } else {
                 print("Error decoding audio because decodedData is nil")
             }
@@ -354,18 +410,18 @@ struct ContentView: View {
             print("Error decoding audio data: \(error.localizedDescription)")
         }
     }
-    
+
     private func convertWAVtoM4A(inputURL: URL, outputURL: URL) throws {
         let asset = AVURLAsset(url: inputURL)
         let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A)
-        
+
         guard exportSession != nil else {
             throw NSError(domain: "AudioConversionError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not create AVAssetExportSession."])
         }
-        
+
         exportSession!.outputFileType = AVFileType.m4a
         exportSession!.outputURL = outputURL
-        
+
         exportSession!.exportAsynchronously {
             if exportSession!.status == .completed {
                 print("Audio conversion completed successfully.")
