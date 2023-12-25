@@ -149,6 +149,7 @@ struct ContentView: View {
             if let decodedAudio = decodedAudio {
                 Button(action: {
                     // Handle playing the decoded audio
+                    print("decodedAudio:\(decodedAudio)")
                     playDecodedAudio(data: decodedAudio)
                 }) {
                     Image(systemName: "play.circle.fill")
@@ -211,9 +212,28 @@ struct ContentView: View {
             print("Error encoding data to JSON")
             return
         }
+        // print("encoding jsondata\n: \(String(data: jsonData, encoding: .utf8) ?? "Error converting to string")")
+        
+        /*
+         for debug
+        do {
+            // Get the documents directory
+            let documentsDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            
+            // Append the file name to the directory
+            let fileURL = documentsDirectory.appendingPathComponent("send.log")
+            
+            // Write the JSON data to the file
+            try jsonData.write(to: fileURL)
+            
+            print("JSON data written to \(fileURL)")
+        } catch {
+            print("Error writing JSON data to file: \(error.localizedDescription)")
+        }
+         */
 
-        guard let url = URL(string: "https://www.example.com/rec") else {
-            print("Invalid URL")
+        guard let url = URL(string: "https://hackathon202312.azurewebsites.net/api/hackathon202312") else {
+        // guard let url = URL(string: "http://localhost:7071/api/hackathon202312") else { print("Invalid URL")
             return
         }
 
@@ -221,6 +241,9 @@ struct ContentView: View {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonData
+        // Increase timeout interval
+        request.timeoutInterval = 90 // or any other value in seconds
+        print("request json data:\(String(describing: jsonData))")
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             // Handle the response or error as needed
@@ -228,23 +251,56 @@ struct ContentView: View {
                 print("Error: \(error.localizedDescription)")
             } else if let data = data {
                 do {
+                    /*
+                     for debug about response
+                    print("response:\n\(String(describing: response))")
+                    print("response data:\n\(data)")
+                    do {
+                        // Get the documents directory
+                        let documentsDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                        
+                        // Append the file name to the directory
+                        let fileURL = documentsDirectory.appendingPathComponent("response.log")
+                        
+                        // Write the JSON data to the file
+                        try data.write(to: fileURL)
+                        
+                        print("JSON data written to \(fileURL)")
+                    } catch {
+                        print("Error writing JSON data to file: \(error.localizedDescription)")
+                    }
+                     */
+                    
                     // Decode JSON response
                     let decoder = JSONDecoder()
-                    let serverResponse = try decoder.decode(ServerResponse.self, from: data)
+                    let dataContainer = try decoder.decode(DataContainer.self, from: data)
 
                     // Access data fields
-                    let textData = serverResponse.data.text
-                    let audioData = serverResponse.data.audio
+                    let textData = dataContainer.text
+                    let audioData = dataContainer.audio
 
                     // Update ContentView properties
                     decodedText = textData
                     decodedAudio = audioData?.base64DecodedData
+                    // Assuming decodedAudio is of type Data
+
+                    /*
+                    // for debug about response audio.
+                    if let decodedAudio = decodedAudio {
+                        let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.wav")
+
+                        do {
+                            try decodedAudio.write(to: fileURL)
+                            print("Successfully saved decoded audio to \(fileURL)")
+                        } catch {
+                            print("Error saving decoded audio: \(error.localizedDescription)")
+                        }
+                    }
+                    */
 
                     // Handle the data as needed
-                    print("Code: \(serverResponse.code)")
-                    print("Error Message: \(serverResponse.errormsg)")
-                    print("Text Data: \(textData ?? "N/A")")
-                    print("Audio Data: \(audioData ?? "N/A")")
+                    print("Text Data: \(textData?.count ?? -1)")
+                    print("Audio Data: \(audioData?.count ?? -1)")
                 } catch {
                     print("Error decoding JSON: \(error.localizedDescription)")
                 }
@@ -265,13 +321,49 @@ struct ContentView: View {
         do {
             // Decode base64 audio data
             let decodedData = Data(base64Encoded: data)
-
-            // Play the audio
+            print("decodedData: \(String(describing: decodedData))")
+            if decodedData != nil {
+                // Save decodedData to a temporary file
+                let tempWavURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.wav")
+                try decodedData!.write(to: tempWavURL, options: .atomic)
+                
+                // Convert WAV to M4A using AVAssetExportSession
+                let tempM4AURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.m4a")
+                try convertWAVtoM4A(inputURL: tempWavURL, outputURL: tempM4AURL)
+                
+                // Play the M4A audio
+                audioPlayerManager.playAudio(url: tempM4AURL)
+            } else {
+                print("Error decoding audio because decodedData is nil")
+            }
+            /*
+            // for m4a format file
             if let audioData = decodedData {
                 audioPlayerManager.playAudio(data: audioData)
             }
+             */
         } catch {
             print("Error decoding audio data: \(error.localizedDescription)")
+        }
+    }
+    
+    private func convertWAVtoM4A(inputURL: URL, outputURL: URL) throws {
+        let asset = AVURLAsset(url: inputURL)
+        let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetAppleM4A)
+        
+        guard exportSession != nil else {
+            throw NSError(domain: "AudioConversionError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not create AVAssetExportSession."])
+        }
+        
+        exportSession!.outputFileType = AVFileType.m4a
+        exportSession!.outputURL = outputURL
+        
+        exportSession!.exportAsynchronously {
+            if exportSession!.status == .completed {
+                print("Audio conversion completed successfully.")
+            } else if exportSession!.status == .failed {
+                print("Audio conversion failed: \(exportSession!.error?.localizedDescription ?? "Unknown error")")
+            }
         }
     }
 }
