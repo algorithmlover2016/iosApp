@@ -32,6 +32,9 @@ struct ContentView: View {
     @State private var selectedImage: UIImage?
     @State private var uuid: UUID = UUID()  // Add a state property for the UUID
 
+    @State private var decodedImage: UIImage?
+    @State private var showImageDetails = false
+
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -164,25 +167,44 @@ struct ContentView: View {
                 .padding()
             }
              */
-            if let decodedAudio = decodedAudio {
-                Button(action: {
-                    // Toggle the play/pause state
-                    isResAudioPlaying.toggle()
+            HStack {
+                if let decodedAudio = decodedAudio {
+                    Button(action: {
+                        // Toggle the play/pause state
+                        isResAudioPlaying.toggle()
 
-                    // Handle playing or stopping the decoded audio based on the state
-                    if isResAudioPlaying {
-                        playDecodedAudio(data: decodedAudio)
-                    } else {
-                        // Stop the audio playback
-                        resAudioPlayerManager.stopAudio()
+                        // Handle playing or stopping the decoded audio based on the state
+                        if isResAudioPlaying {
+                            playDecodedAudio(data: decodedAudio)
+                        } else {
+                            // Stop the audio playback
+                            resAudioPlayerManager.stopAudio()
+                        }
+                    }) {
+                        Image(systemName: isResAudioPlaying ? "pause.circle.fill" : "play.circle.fill")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.green)
                     }
-                }) {
-                    Image(systemName: isResAudioPlaying ? "pause.circle.fill" : "play.circle.fill")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .foregroundColor(.green)
+                    .padding()
                 }
-                .padding()
+
+                if let decodedImage = decodedImage {
+                    Button(action: {
+                        showImageDetails.toggle()
+                    }) {
+                        Image(uiImage: decodedImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.blue)
+                    }
+                    .padding()
+                    .sheet(isPresented: $showImageDetails) {
+                        // Pop-up window to display image details
+                        ImageDetailsView(image: decodedImage)
+                    }
+                }
             }
 
             /*
@@ -233,6 +255,7 @@ struct ContentView: View {
         resAudioPlayerManager.stopAudio()
         decodedText = nil
         decodedAudio = nil
+        decodedImage = nil
     }
 
     private func reset() {
@@ -335,11 +358,13 @@ struct ContentView: View {
                     // Access data fields
                     let textData = dataContainer.text
                     let audioData = dataContainer.audio
+                    let imageBase64Data = dataContainer.image
 
                     // Update ContentView properties
                     decodedText = textData
                     decodedAudio = audioData?.base64DecodedData
                     // Assuming decodedAudio is of type Data
+                    decodedImage = imageBase64Data?.base64DecodedImage()
 
                     /*
                     // for debug about response audio.

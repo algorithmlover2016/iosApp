@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 struct DataToSend: Codable {
     var textInput: String?
     var audioBase64: String?
@@ -27,10 +29,16 @@ struct ServerResponse: Codable {
 struct DataContainer: Codable {
     let text: String?
     let audio: String?
+    let image: String?
     // Add other fields as needed
 }
 extension String {
     var base64DecodedData: Data? {
         Data(base64Encoded: self)
+    }
+
+    func base64DecodedImage() -> UIImage? {
+        guard let data = Data(base64Encoded: self) else { return nil }
+        return UIImage(data: data)
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA0BA6CB2B3184C400FDFF34 /* LAME in Frameworks */ = {isa = PBXBuildFile; productRef = AA0BA6CA2B3184C400FDFF34 /* LAME */; };
 		AA0BA6CE2B31855400FDFF34 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = AA0BA6CD2B31855400FDFF34 /* AudioKit */; };
+		AA2E285B2B4659BF00B0E9C5 /* ImageDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2E285A2B4659BF00B0E9C5 /* ImageDetailsView.swift */; };
 		AA446CA12B313F9500D1B06B /* V2FaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA446CA02B313F9500D1B06B /* V2FaultApp.swift */; };
 		AA446CA32B313F9500D1B06B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA446CA22B313F9500D1B06B /* ContentView.swift */; };
 		AA446CA52B313F9700D1B06B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA446CA42B313F9700D1B06B /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA2E285A2B4659BF00B0E9C5 /* ImageDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsView.swift; sourceTree = "<group>"; };
 		AA446C9D2B313F9500D1B06B /* V2Fault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2Fault.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA446CA02B313F9500D1B06B /* V2FaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2FaultApp.swift; sourceTree = "<group>"; };
 		AA446CA22B313F9500D1B06B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				AAEDB0E52B328C530097312F /* Audio.swift */,
 				AAEDB0E72B328CC70097312F /* Camera.swift */,
+				AA2E285A2B4659BF00B0E9C5 /* ImageDetailsView.swift */,
 			);
 			path = FaultModels;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEDB0E82B328CC70097312F /* Camera.swift in Sources */,
+				AA2E285B2B4659BF00B0E9C5 /* ImageDetailsView.swift in Sources */,
 				AAEDB0E62B328C530097312F /* Audio.swift in Sources */,
 				AA446CA32B313F9500D1B06B /* ContentView.swift in Sources */,
 				AAEDB0EB2B328E520097312F /* RequestData.swift in Sources */,
