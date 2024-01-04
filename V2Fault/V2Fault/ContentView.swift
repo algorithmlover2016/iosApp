@@ -310,7 +310,9 @@ struct ContentView: View {
         }
          */
 
-        guard let url = URL(string: "https://hackathon202312.azurewebsites.net/api/hackathon202312") else {
+        // hackathongpt4v
+        // hackathon202312
+        guard let url = URL(string: "https://hackathongpt4v.azurewebsites.net/api/hackathon202312") else {
         // guard let url = URL(string: "http://localhost:7071/api/hackathon202312") else { print("Invalid URL")
             return
         }
