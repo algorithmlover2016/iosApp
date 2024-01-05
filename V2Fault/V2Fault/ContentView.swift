@@ -35,13 +35,21 @@ struct ContentView: View {
     @State private var decodedImage: UIImage?
     @State private var showImageDetails = false
 
+    @State private var isButtonRed = false
+    @State private var requestUrl = "hackathon202312"
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .foregroundColor(.blue)
-                .padding()
+            Button(action: {
+                isButtonRed.toggle()
+                requestUrl = isButtonRed ? "hackathongpt4v" : "hackathon202312"
+            }) {
+                Image(systemName: "globe")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(isButtonRed ? .red : .blue)
+            }
+            .padding()
 
             Text("Welcome to use Fault Detection!")
                 .padding()
@@ -196,7 +204,7 @@ struct ContentView: View {
                         Image(uiImage: decodedImage)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 60, height: 60)
                             .foregroundColor(.blue)
                     }
                     .padding()
@@ -312,7 +320,7 @@ struct ContentView: View {
 
         // hackathongpt4v
         // hackathon202312
-        guard let url = URL(string: "https://hackathongpt4v.azurewebsites.net/api/hackathon202312") else {
+        guard let url = URL(string: "https://\(requestUrl).azurewebsites.net/api/hackathon202312") else {
         // guard let url = URL(string: "http://localhost:7071/api/hackathon202312") else { print("Invalid URL")
             return
         }
