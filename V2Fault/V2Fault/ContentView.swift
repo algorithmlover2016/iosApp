@@ -235,6 +235,11 @@ struct ContentView: View {
                     ScrollView {
                         Text(decodedText)
                             .padding()
+                            .contextMenu {
+                                Button("Copy") {
+                                    UIPasteboard.general.string = decodedText
+                                }
+                            }
                     }
                     .frame(maxHeight: 150) // Set the maximum height for the scrollable box
                     .border(Color.blue, width: 1) // Add a border for better visibility
